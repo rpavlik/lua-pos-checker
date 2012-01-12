@@ -7,13 +7,11 @@ function section(text)
 	end
 end
 
-function requirement(comment)
-	return function(pred)
-		return {
-			["isRequirement"] = true,
-			["predicate"] = pred,
-			["comment"] = comment
-		}
-	end
+function requirement(comment, pred)
+	return {
+		["isRequirement"] = true,
+		["predicate"] = pred,
+		["comment"] = comment
+	}
 end
 
