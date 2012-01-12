@@ -1,0 +1,4 @@
+Program of Study Checker
+========================
+
+Requires lua 5.1 and lua-stdlib.
