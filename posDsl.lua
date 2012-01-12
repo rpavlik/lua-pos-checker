@@ -68,12 +68,3 @@ entry = function(coursenumOrT)
 	end
 end		
 
-test = POS{
-	entry "COMS 511" {
-		credits = 3,
-		grade = "A",
-		semester = "Fall 2011"
-	}
-}
-
-print(test)

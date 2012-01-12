@@ -10,6 +10,7 @@ end
 function requirement(comment)
 	return function(pred)
 		return {
+			["isRequirement"] = true,
 			["predicate"] = pred,
 			["comment"] = comment
 		}
