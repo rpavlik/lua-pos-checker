@@ -11,8 +11,6 @@ require "posPredicates"
 require "requirementsDsl"
 require "posDsl"
 
-local indent = "  "
-
 local tryRequirement = function(pos, requirement, id)
 	requirement.id = id
 	local result = requirement.predicate(pos)
@@ -30,17 +28,14 @@ end
 
 local recursiveRequirements
 
-recursiveRequirements = function(pos, t, level, id)
-	local display = function(...)
-		print(indent:rep(level), ...)
-	end
-
-	display(t.text)
+recursiveRequirements = function(pos, t, id)
+	print()
+	print(t.text)
 	for i, v in ipairs(t) do
 		if v.isRequirement then
 			tryRequirement(pos, v, id .. "." .. tostring(i))
 		else
-			recursiveRequirements(pos, v, level + 1, id .. "." .. tostring(i))
+			recursiveRequirements(pos, v, id .. "." .. tostring(i))
 		end
 	end
 end
@@ -60,7 +55,7 @@ local checkRequirements = function(pos, reqs)
 		unknown = {}
 	}
 	for _, reqmod in ipairs(reqtable) do
-		recursiveRequirements(pos, reqmod, 0, reqmod.name)
+		recursiveRequirements(pos, reqmod, reqmod.name)
 	end
 	return pos
 end
