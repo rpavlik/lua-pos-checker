@@ -10,16 +10,16 @@ return {
 				requirement("One entry for 511", function(pos) return #(list.filter(pos, isDeptAndNum("COMS", 511))) == 1 end),
 				requirement("B or higher for 511",
 					function(pos)
-						local courselist = list.filter(pos, isDeptAndNum("COMS", 511))
+						local courselist = pos:filter(isDeptAndNum("COMS", 511))
 						if #courselist ~= 1 then return nil end
 						if courselist[1].grade == nil then return nil end
 						return gradeLookup[courselist[1].grade] >= gradeLookup["B"]
 					end),
 				requirement("One entry for 531",
-					function(pos) return #(list.filter(pos, isDeptAndNum("COMS", 531))) == 1 end);
+					function(pos) return #(pos:filter(isDeptAndNum("COMS", 531))) == 1 end);
 				requirement("B or higher for 531",
 					function(pos)
-						local courselist = list.filter(pos, isDeptAndNum("COMS", 531))
+						local courselist = pos:filter(isDeptAndNum("COMS", 531))
 						if #courselist ~= 1 then return nil end
 						if courselist[1].grade == nil then return nil end
 						return gradeLookup[courselist[1].grade] >= gradeLookup["B"]

@@ -52,7 +52,11 @@ end
 POS = function(input)
 	local poslist = list.new(input)
 	validate(poslist)
-	return poslist
+	local mt = getmetatable(poslist)
+	mt.__index = {
+		["filter"] = function(self, p) return list.filter(p, self) end
+	}
+	return setmetatable(poslist, mt)
 end
 
 entry = function(coursenumOrT)

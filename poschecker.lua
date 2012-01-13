@@ -62,7 +62,7 @@ local checkRequirements = function(pos, reqs)
 end
 
 posmethods = {
-	["POS"] = function(t) return setmetatable(POS(t), {__index={["checkRequirements"]=checkRequirements}}) end,
+	["POS"] = function(t) getmetatable(POS(t)).__index["checkRequirements"]=checkRequirements return t end,
 	["entry"] = entry
 }
 
