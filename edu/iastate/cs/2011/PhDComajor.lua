@@ -37,6 +37,7 @@ return {
 			},
 			section [[c. At least three (3) credits of Com S 610.]]
 			{
+				requirement("3+ credits of Com S 610", function(pos) return list.foldl(function(s, e) return s + e.credits end, 0, pos:filter(isDeptAndNum("COMS", 610))) >= 3 end)
 			},
 			section [[Subject to the following restrictions:]]
 			{
